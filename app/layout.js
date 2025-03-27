@@ -1,6 +1,7 @@
 import Preloader from "@/components/preloader";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/smooth";
+import { Analytics } from "@vercel/analytics/react"
 
 
 export const metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body
         className={`antialiased`}
       >
+        <Analytics />
         <Preloader />
         {children}
       </body>
