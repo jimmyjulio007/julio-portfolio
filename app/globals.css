@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@import "@fontsource-variable/syne";
+@import "@fontsource-variable/rubik";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-syne: 'Syne Variable';
+  --font-rubik: 'Rubik Variable';
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1A1A1A;
+    --foreground: #ededed;
+  }
+}
+
+/* syne-latin-wght-normal */
+/* @font-face {
+  font-family: 'Syne Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url(@fontsource-variable/syne/files/syne-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+} */
+
+
+/* rubik-latin-wght-normal */
+/* @font-face {
+  font-family: 'Rubik Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 900;
+  src: url(@fontsource-variable/rubik/files/rubik-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+} */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+
+.btn-primary {
+  @apply shadow-[inset_0_0_0_2px_#616467] text-sm text-white font-rubik px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200
+}
+
+.btn-hero {
+  @apply px-5 py-3 z-50 rounded-full hover:bg-orange-500 bg-orange-600 font-rubik font-bold uppercase items-center text-[10px] md:text-sm flex gap-2 last:hover:translate-x-2 transition duration-150 ease-in-out
+}
+
+.btn-project {
+  @apply flex gap-1 items-center font-rubik text-center text-sm uppercase border border-orange-600 hover:border-orange-500 rounded-full px-5 py-3 last:hover:translate-x-2 transition duration-150 ease-in-out
+}
+
+.btn-send {
+  @apply px-10 py-3 z-50 rounded-full text-center hover:bg-orange-500 bg-orange-600 font-rubik font-bold uppercase items-center text-sm flex gap-2 last:hover:translate-x-2 transition duration-150 ease-in-out
+}
