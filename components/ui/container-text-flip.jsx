@@ -48,10 +48,8 @@ export function ContainerTextFlip({
       transition={{ duration: animationDuration / 1000 }}
       className={cn(
         "relative inline-block rounded-lg py-2 text-center text-4xl font-bold md:text-7xl ",
-        "[background:linear-gradient(to_bottom,var(--color-gray-100),var(--color-gray-200))]",
-        "shadow-[inset_0_-1px_var(--color-gray-300),inset_0_0_0_1px_var(--color-gray-300),_0_4px_8px_var(--color-gray-300)]",
-        "dark:[background:linear-gradient(to_bottom,var(--color-neutral-700),var(--color-neutral-800))]",
-        "dark:shadow-[inset_0_-1px_#10171e,inset_0_0_0_1px_hsla(205,89%,46%,.24),_0_4px_8px_#00000052]",
+        "[background:linear-gradient(to_bottom,var(--color-neutral-700),var(--color-neutral-800))]",
+        "shadow-[inset_0_-1px_#10171e,inset_0_0_0_1px_hsla(205,89%,46%,.24),_0_4px_8px_#00000052]",
         "font-syne font-bold text-4xl md:text-[72px] max-md:-pt-10 text-white",
         className
       )}
