@@ -3,8 +3,8 @@
 @import "@fontsource-variable/rubik";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1A1A1A;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -28,13 +28,6 @@
 }
 
 
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1A1A1A;
-    --foreground: #ededed;
-  }
-}
 
 /* syne-latin-wght-normal */
 /* @font-face {
@@ -64,7 +57,7 @@ body {
 
 
 .btn-primary {
-  @apply shadow-[inset_0_0_0_2px_#616467] text-sm text-white font-rubik px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white dark:text-neutral-200 transition duration-200
+  @apply shadow-[inset_0_0_0_2px_#616467] text-sm font-rubik px-12 py-4 rounded-full tracking-widest uppercase font-bold bg-transparent hover:bg-[#616467] hover:text-white text-neutral-200 transition duration-200
 }
 
 .btn-hero {
