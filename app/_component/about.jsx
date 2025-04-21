@@ -1,23 +1,25 @@
-"use client"
-
 import { Download} from 'lucide-react'
 import Image from 'next/image'
 import React, { Suspense } from 'react'
 import * as motion from 'motion/react-client'
+import { useTranslations } from 'next-intl';
 
 
 export default function About() {
+
+  const t = useTranslations()
+
+
   return (
     <div id='about' className="py-20 flex max-md:flex-col px-10 justify-center items-center gap-10 md:gap-40">
         <div className="flex flex-initial flex-col max-lg:px-2 gap-4 items-start">
             <p className="font-syne font-black text-2xl md:text-4xl relative lg:text-[56px]">
-            Let’s get know <br />about me closer
+            {t('lets-get-know')} <br />{t('about-me-closer')}
             <Image src="/blur.svg" alt="blur" className="overflow-hidden animate-pulse absolute -top-24 -left-36" width={517} height={273}/>
             </p>
             <p className="font-rubik font-normal whitespace-pre-line break-words max-w-4xl text-[#A8A8A8] text-lg text-wrap lg:text-[18px]">
-            Jimmy is a Madagascar-based Full Stack JavaScript developer specializing in modern web applications and interactive digital experiences. His portfolio showcases diverse projects ranging from responsive websites and dynamic applications to innovative SaaS solutions.
-            </p>
-            <a aria-label='download cv' download={true} href={'/CV JIMMY.pdf'} className="btn-hero mt-10">Download my CV <Download /></a>
+            {t('information')} </p>
+            <a aria-label='download cv' download={true} href={'/CV JIMMY.pdf'} className="btn-hero mt-10">{t('download-my-cv')} <Download /></a>
         </div>
         <div className="relative max-md:px-4 max-sm:pb-4">
           <Suspense fallback={<div>Loading...</div>}>

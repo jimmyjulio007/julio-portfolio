@@ -1,4 +1,7 @@
-import { Label } from "@/components/ui/label";
+"use client";
+
+import { useRouter, usePathname } from "next/navigation";
+import { useLocale } from "next-intl";
 import {
   Select,
   SelectContent,
@@ -8,36 +11,53 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useId } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 export default function SelectUI() {
   const id = useId();
+  const currentLocale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleLocaleChange = (locale) => {
+    const segments = pathname.split('/');
+    segments[1] = locale; // Replace the locale segment
+    const newPath = segments.join('/');
+    router.push(newPath);
+  };
+
   return (
     <div className="*:not-first:mt-2">
-      <Select defaultValue="1">
+      <Select defaultValue={currentLocale} onValueChange={handleLocaleChange}>
         <SelectTrigger
           id={id}
-          className="ps-2 [&>span]:flex [&>span]:items-center [&>span]:gap-2 [&>span_img]:shrink-0">
-          <SelectValue placeholder="Select framework" />
+          className="ps-2 [&>span]:flex [&>span]:items-center [&>span]:gap-2 [&>span_img]:shrink-0"
+        >
+          <SelectValue placeholder="Select language" />
         </SelectTrigger>
-        <SelectContent
-          className="[&_*[role=option]]:ps-2 [&_*[role=option]]:pe-8 [&_*[role=option]>span]:start-auto [&_*[role=option]>span]:end-2 [&_*[role=option]>span]:flex [&_*[role=option]>span]:items-center [&_*[role=option]>span]:gap-2 bg-background font-rubik">
+        <SelectContent className="bg-background font-rubik">
           <SelectGroup>
-            <SelectLabel className="ps-2 font-rubik uppercase">Choose language</SelectLabel>
-            <SelectItem value="1">
-            <Avatar>
-              <AvatarImage src="/FR.svg" alt="@shadcn" />
-              <AvatarFallback className={"font-rubik"}>FR</AvatarFallback>
-            </Avatar>
-              <span className="truncate font-rubik">French</span>
+            <SelectLabel className="ps-2 font-rubik uppercase">
+              Choose language
+            </SelectLabel>
+            <SelectItem value="fr">
+              <div className="flex items-center gap-2">
+                <Avatar>
+                  <AvatarImage src="/FR.svg" alt="FR" />
+                  <AvatarFallback className="font-rubik">FR</AvatarFallback>
+                </Avatar>
+                Français
+              </div>
             </SelectItem>
-            <SelectItem value="2">
-            <Avatar>
-              <AvatarImage src="/GB.svg" alt="@shadcn" />
-              <AvatarFallback className={"font-rubik"}>EN</AvatarFallback>
-            </Avatar>
-              <span className="truncate font-rubik">English</span>
+            <SelectItem value="en">
+              <div className="flex items-center gap-2">
+                <Avatar>
+                  <AvatarImage src="/GB.svg" alt="EN" />
+                  <AvatarFallback className="font-rubik">EN</AvatarFallback>
+                </Avatar>
+                English
+              </div>
             </SelectItem>
           </SelectGroup>
         </SelectContent>

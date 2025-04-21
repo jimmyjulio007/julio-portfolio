@@ -2,11 +2,13 @@
 
 import SelectUI from '@/components/select.ui'
 import { Facebook, Github, Linkedin } from 'lucide-react'
+import { useTranslations } from 'next-intl';
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 
 export default function Footer() {
+  const t = useTranslations()
   
   const [year, setYear] = useState('')
 
@@ -17,7 +19,7 @@ export default function Footer() {
   return (
     <div className='flex flex-col bg-[#131313] pt-16 gap-5 items-center px-4 md:px-40'>
       <div className='flex flex-col justify-center items-center gap-5 pb-10 md:pb-20 w-full'>
-        <span className='text-sm md:text-[24px] text-orange-500 font-syne font-bold'>Get in Touch With Me</span>
+        <span className='text-sm md:text-[24px] text-orange-500 font-syne font-bold'>{t('get-in-touch-with-me-0')}</span>
         <span className='text-white md:underline-offset-4 font-syne font-bold underline text-2xl md:text-4xl text-wrap lg:text-[64px]'>jimmyjulio100@gmail.com</span>
       </div>
       <div className='flex w-full max-sm:flex-col justify-between max-md:px-4 px-[150px] items-center'>
@@ -45,7 +47,7 @@ export default function Footer() {
         
       </div>
       <p className='w-full border-t border-[#949494] max-md:px-4 font-bold font-syne text-center pt-6 pb-10 px-[150px] items-center'>
-      © {year}. Jimmy. All rights reserved. 
+      © {year}{t('jimmy-all-rights-reserved')} 
       </p>
     </div>
   )

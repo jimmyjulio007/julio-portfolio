@@ -1,27 +1,30 @@
 "use client";
 
-import LoadingDots from "@/components/loadingDot";
+import WorldMap from "@/components/ui/world-map";
 import { motion } from "motion/react";
-import dynamic from "next/dynamic";
-
-
-const WorldMap = dynamic(() => import("@/components/ui/world-map"),
- {
-  ssr: false,
-  loading: () => <div className="font-syne inline-flex justify-center w-full text-4xl font-bold items-center gap-1 pt-10 text-neutral-400">Loading<LoadingDots/></div>
- }
-);
+import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 export default function WorldMapFree() {
+
+  const t = useTranslations()
+
+  const $t = useTranslations()
+
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   return (
     <div className="px-4 md:px-10 lg:px-30">
       <div className="py-10 rounded-3xl md:py-20 bg-black w-full">
       <div className="max-w-7xl mx-auto text-center">
         <p className="font-bold font-syne text-xl md:text-4xl text-white">
-          Remote{" "}
+          {t('remote')}{" "}
           <span className="font-syne space-x-1 bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-600 to-neutral-400">
-            {"Connectivity".split("").map((word, idx) => (
+            {$t('connectivity').toLowerCase().split("").map((word, idx) => (
               <motion.span
                 key={idx}
                 className="inline-block"
@@ -34,13 +37,9 @@ export default function WorldMapFree() {
           </span>
         </p>
         <p className="text-sm font-rubik font-semibold md:text-lg text-neutral-500 max-w-4xl mx-auto py-4">
-        Available to collaborate remotely from anywhere, 
-        fully committed and ready to seamlessly integrate into your team. 
-        Your goals, my priority—no boundaries, just results.
-        </p>
+        {t('available-to-collaborate-remotely-from-anywhere-fully-committed-and-ready-to-seamlessly-integrate-into-your-team-your-goals-my-priority-no-boundaries-just-results')} </p>
       </div>
-      {/* <Suspense> */}
-      <WorldMap
+      {isClient && <WorldMap
       lineColor="#f12711"
         dots={[
           {
@@ -89,8 +88,7 @@ export default function WorldMapFree() {
             start: { lat: 28.6139, lng: 77.209 }, // New Delhi
             end: { lat: -42.35879219086626, lng: 47 },   // Toliara, Madagascar
           }
-        ]} />
-    {/* </Suspense> */} 
+        ]} />}
     </div>
     </div>
   );

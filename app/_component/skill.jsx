@@ -1,15 +1,17 @@
 import Image from 'next/image'
 import React from 'react'
 import * as motion from "motion/react-client"
+import { useTranslations } from 'next-intl'
 
 
 export default function Skill() {
+      const t = useTranslations()
+    
   return (
     <div className='flex flex-col md:py-20 gap-8 py-10 justify-center items-center'>
         <p className='font-syne text-4xl font-bold relative'>
-        My Tech Stack
-        </p>
-        <h4 className='font-rubik font-semibold text-center text-2xl text-[#A7A7A7]'>Technologies I’ve been working with recently</h4>
+        {t('my-tech-stack')} </p>
+        <h4 className='font-rubik font-semibold text-center text-2xl text-[#A7A7A7]'>{t('technologies-ive-been-working-with-recently')}</h4>
         <div className='grid md:grid-cols-2 gap-10 md:gap-12'>
             <div className='flex flex-col justify-start items-center gap-4'>
                 <h2 className='font-syne font-bold text-2xl'>Front-End</h2>
@@ -67,7 +69,7 @@ export default function Skill() {
                 </motion.div>
             </div>
             <div className='flex flex-col justify-start items-center gap-4'>
-            <h2 className='font-syne font-bold text-2xl'>Tools</h2>
+            <h2 className='font-syne font-bold text-2xl'>{t('tools')}</h2>
             <motion.div
             initial={{opacity:0,x:-200, scale:0.2}}
             whileInView={{opacity:1,x:0,scale:1}}
@@ -89,7 +91,7 @@ export default function Skill() {
             </motion.div>
             </div>
             <div className='flex flex-col justify-start items-center gap-4 md:gap-4'>
-            <h2 className='font-syne font-bold text-2xl'>Test & Quality</h2>
+            <h2 className='font-syne font-bold text-2xl'>{t('test-and-quality')}</h2>
             <motion.div
             initial={{opacity:0,x:200, scale:0.2}}
             whileInView={{opacity:1,x:0,scale:1}}
